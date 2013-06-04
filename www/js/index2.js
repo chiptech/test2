@@ -14,14 +14,15 @@ function init() {
 		window.location = "offline.html";
 	}else {
 		navigator.notification.alert("You are OnLine!");
-		window.location = "online.html";
 		fillDB();
+		window.location = "online.html";
 	}
 }
 function fillDB()
 {
 	 initDB("account" , "00000000-0000-0000-00aa-000010001002");
-	 initDB("contact" , "00000000-0000-0000-00aa-000010001004");
+ 	 initDB("contact" , "00000000-0000-0000-00aa-000010001004");
+	 navigator.notification.alert("BD created with Succes!");
 }
 function initDB(entity , viewId)
 {
