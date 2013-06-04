@@ -623,11 +623,11 @@ var attr = mapToDictionnary(attributes);
 var entityName = sessionStorage.getItem('offlineDB');
   if ( entityName == "contact")
   {
-      name= attributes['firstname']+ " "+ attributes['lastname'];
+      name= attr['firstname']+ " "+ attr['lastname'];
   
   }else
   {
-		name= attributes['name'];
+		name= attr['name'];
   }
  return name ;
 }
