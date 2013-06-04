@@ -35,6 +35,7 @@ function gotFS(fileSystem) {
 		var filename= sessionStorage.getItem('offlineDB')+"s.txt";
 		console.log(filename);
         fileSystem.root.getFile( filename , null , gotFileEntry, fail);
+}
 
     function gotFileEntry(fileEntry) {
          fileEntry.file(gotFile, fail);
