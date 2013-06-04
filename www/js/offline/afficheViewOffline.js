@@ -18,7 +18,7 @@ function affichView()
 	$('#busy').show();	
 	var elem=document.getElementById('thelist');
 	elem.innerHTML="";
-	window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+    document.addEventListener("deviceready", onDeviceReady , false);
 }
 
 function affichViewEncours() 
@@ -28,8 +28,9 @@ function affichViewEncours()
 	elem.innerHTML="";
     CallServView(page_en_cours1);
 }
-
-    
+function onDeviceReady () {
+     window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
 function gotFS(fileSystem) {
         fileSystem.root.getFile("accounts.txt", null , gotFileEntry, fail);
     }
@@ -43,7 +44,8 @@ function gotFS(fileSystem) {
     	var reader = new FileReader();
         reader.onloadend = function(evt) {
             console.log("Read as text");
-		    sessionStorage.setItem('accountsDB', evt.target.result);
+           // console.log(evt.target.result);
+		   sessionStorage.setItem('accountsDB', evt.target.result);
 		   CallServView(0);
         };
         reader.readAsText(file);
