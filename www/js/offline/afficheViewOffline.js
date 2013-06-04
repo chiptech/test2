@@ -31,8 +31,10 @@ function onDeviceReady () {
      window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-		//var filname= sessionStorage.getItem('offlineDB')+".txt" ;
-        fileSystem.root.getFile("accounts.txt", null , gotFileEntry, fail);
+
+		var filname= sessionStorage.getItem('offlineDB')+"s.txt";
+		console.log(filname);
+        fileSystem.root.getFile(filename , null , gotFileEntry, fail);
     }
 
     function gotFileEntry(fileEntry) {
