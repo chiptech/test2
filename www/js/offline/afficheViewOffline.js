@@ -11,11 +11,10 @@ var nbre_page_par_bloc1=5;
 
 function affichView() 
 {
-     
+    $('#busy').show();
     var divpage=document.getElementById('page');
 	divpage.innerHTML='';
 	cx1=0;
-	$('#busy').show();	
 	var elem=document.getElementById('thelist');
 	elem.innerHTML="";
     document.addEventListener("deviceready", onDeviceReady , false);
@@ -26,13 +25,14 @@ function affichViewEncours()
 	$('#busy').show();	
 	var elem=document.getElementById('thelist');
 	elem.innerHTML="";
-    CallServView(page_en_cours1);
+    onDeviceReady ();
 }
 function onDeviceReady () {
      window.requestFileSystem( LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-        fileSystem.root.getFile("accounts.txt", null , gotFileEntry, fail);
+		var filname= sessionStorage.getItem('offlineDB')+".txt" ;
+        fileSystem.root.getFile(filename, null , gotFileEntry, fail);
     }
 
     function gotFileEntry(fileEntry) {
@@ -44,9 +44,7 @@ function gotFS(fileSystem) {
     	var reader = new FileReader();
         reader.onloadend = function(evt) {
             console.log("Read as text");
-           // console.log(evt.target.result);
-		   sessionStorage.setItem('accountsDB', evt.target.result);
-		   CallServView(0);
+		    CallServView(evt.target.result);
         };
         reader.readAsText(file);
     }
@@ -55,11 +53,10 @@ function gotFS(fileSystem) {
         console.log(error.code);
     }
 
-function CallServView(idpage)
+function CallServView(result)
 {
-	var db = sessionStorage.getItem('accountsDB');
-	$myObject = $.parseJSON(db);
-	ServiceSucceededV(getRecordsPerPage($myObject ,idpage));
+	$myObject = $.parseJSON(result);
+	ServiceSucceededV(getRecordsPerPage($myObject ,page_en_cours1));
 }	
 function ServiceSucceededV(result)
 {
