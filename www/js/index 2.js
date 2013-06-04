@@ -31,7 +31,7 @@ function initDB(entity , viewId)
           $.ajax({
 			type: 'POST',
             async: false,
-            url:'http://10.13.121.51:80/WcfMobileHLI/Service1.svc/offline/GetRecords',
+            url:'http://10.13.121.73:80/WcfMobileHLI/Service1.svc/offline/GetRecords',
 			data: JSON.stringify($request),
 			contentType: "application/json",
             dataType:'json',
