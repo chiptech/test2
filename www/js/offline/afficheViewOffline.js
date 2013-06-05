@@ -136,11 +136,11 @@ elm2.innerHTML=" ";
 if(j%10==0)
 {
 //alert(j);
-	$('#thelist').append('<li onclick="goRecord('+j+');" style="height: 40;"><a href="javascript:goRecord('+j+')"> <img onclick="goRecord('+j+');" src="img/'+sessionStorage.getItem("EntityName")+'.png" style="margin: -1;margin-left: -10;margin-left: -1;margin-top: 10;" class="list-icon1"/><p class="line0" style="margin-left: 21;line-height: 0;height: 0;white-space: nowrap;margin-top: -5;">'+ dpName + '</p> </a></li> <p> </p>');          
+	$('#thelist').append('<li onclick="goRecord('+j+');" style="height: 40;"><a href="javascript:goRecord('+j+')"> <img onclick="goRecord('+j+');" src="img/'+sessionStorage.getItem("offlineDB")+'.png" style="margin: -1;margin-left: -10;margin-left: -1;margin-top: 10;" class="list-icon1"/><p class="line0" style="margin-left: 21;line-height: 0;height: 0;white-space: nowrap;margin-top: -5;">'+ dpName + '</p> </a></li> <p> </p>');          
 }
 else
 {
-$('#thelist').append('<li onclick="goRecord('+j+');" style="height: 20;"><a href="javascript:goRecord('+j+')"> <img onclick="goRecord('+j+');" src="img/'+sessionStorage.getItem("EntityName")+'.png" style="margin: -10;margin-left: -1;" class="list-icon1"/><p class="line0" style="margin-left: 21;line-height: 0;height: 0;white-space: nowrap;">'+ dpName + '</p> </a></li> <p> </p>');          
+$('#thelist').append('<li onclick="goRecord('+j+');" style="height: 20;"><a href="javascript:goRecord('+j+')"> <img onclick="goRecord('+j+');" src="img/'+sessionStorage.getItem("offlineDB")+'.png" style="margin: -10;margin-left: -1;" class="list-icon1"/><p class="line0" style="margin-left: 21;line-height: 0;height: 0;white-space: nowrap;">'+ dpName + '</p> </a></li> <p> </p>');          
 
 }  
 //alert(data.Entities[j].Attributes[1].value);
