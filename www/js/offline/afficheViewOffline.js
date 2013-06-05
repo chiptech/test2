@@ -621,14 +621,21 @@ function displayName(attributes)
 var name ;
 var attr = mapToDictionnary(attributes);
 var entityName = sessionStorage.getItem('offlineDB');
-  if ( entityName == "contact")
+   switch (entityName) {
+    case "contact": name= attr['firstname']+ " "+ attr['lastname'];
+					break;
+	case "appointment": name= attr['subject'];
+					break;
+	default: name= attr['name'];
+}
+  /*if ( entityName == "contact")
   {
       name= attr['firstname']+ " "+ attr['lastname'];
   
   }else
   {
 		name= attr['name'];
-  }
+  }*/
  return name ;
 }
 
