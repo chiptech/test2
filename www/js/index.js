@@ -20,20 +20,20 @@ function init() {
 }
 function fillDB()
 {
-	 initDB("account" , "00000000-0000-0000-00aa-000010001002");
- 	 initDB("contact" , "00000000-0000-0000-00aa-000010001004");
-	 initDB("appointment" ,"606eea12-0c33-47d3-96e1-ba1529ee8205");
+	 initDB("account");
+ 	 initDB("contact");
+	 initDB("appointment");
 	 navigator.notification.alert("BD created with Succes!");
 }
 function initDB(entity , viewId)
 {
   entityName = entity ;
   console.log("Appel initdb");
-  $request = { u: {login:'admincrm', pw: 'Operating0', id:viewId, name:entity} };
+  $request = { u: {login:'admincrm', pw: 'Operating0', entity:entity } };
           $.ajax({
 			type: 'POST',
             async: false,
-            url:'http://10.13.121.62:80/WcfMobileHLI/Service1.svc/offline/GetRecords',
+            url:'http://10.13.121.62:80/WcfMobileHLI/Service1.svc/offLine/GetRecords',
 			data: JSON.stringify($request),
 			contentType: "application/json",
             dataType:'json',
