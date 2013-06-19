@@ -1,0 +1,33 @@
+ public EntityCollection GetRecords(UserProfileOrgEnt u)
+        {
+            EntityCollection ec = new EntityCollection();
+            var _serviceProxy = org.getOrgServProxy(u.login, u.pw);
+
+            string attributs = org.AttributFormulaire(u.login, u.pw, u.entity, 1);
+            string[] split_module = attributs.Split(new Char[] { '@' });
+            string[] split_entite = split_module[1].Split(new Char[] { '=' });
+
+            ColumnSet cols = new ColumnSet();
+            for (int i = 0; i < split_entite.Length - 1; i++)
+            {
+                string[] split_attr = split_entite[i].Split(new Char[] { '#' });
+                cols.AddColumn(split_attr[1]);
+            }
+
+            QueryExpression queryExpression = new QueryExpression(u.entity);
+            queryExpression.ColumnSet = cols;
+
+            if (u.entity.Equals("appointement"))
+            {
+                ConditionExpression condition1 = new ConditionExpression();
+                condition1.AttributeName = "statecode";
+                condition1.Operator = ConditionOperator.Equal;
+                condition1.Values.Add(0);            
+
+                FilterExpression filter1 = new FilterExpression();
+                filter1.Conditions.Add(condition1);
+                queryExpression.Criteria.AddFilter(filter1);
+            }
+            ec = _serviceProxy.RetrieveMultiple(queryExpression);
+            return ec;
+        }
